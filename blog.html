@@ -2,35 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PH Tube</title>
+  <link rel="shortcut icon" href="./image/fav-icon.png" type="image/x-icon">
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<!-- <body>
-    <header class=" md:max-w-2xl lg:max-w-screen-xl mx-auto mt-5 lg:mt-8">
-        <div class="navbar flex justify-between">
-            <div class="">
-              <a href="/index.html"><img src="./image/Logo.png" alt="" class="w-32 md:w-36 lg:w-44"></a>
-            </div>
-            <div class="">
-              <button class="bg-[#D3D3D3] px-2 md:px-3 py-2 rounded font-medium sm:text-xs md:text-sm lg:text-lg">Short by view</button>
-            </div>
-            <div class="rounded">
-                <a href="./blog.html"><button class="bg-[#FF203D] text-white px-3 md:px-5 py-2 rounded font-medium sm:text-xs md:text-sm lg:text-lg">Blog</button></a>
-              </div>
-           
-          </div>
-        
-        <hr class="mt-6">
-    </header>
+<body>
+  <header class=" md:max-w-2xl lg:max-w-screen-xl mx-auto mt-5 lg:mt-8">
+    <div class="navbar flex justify-between">
+      <div class="">
+        <a href="/index.html"><img src="./image/Logo.png" alt="" class="w-32 md:w-36 lg:w-44"></a>
+      </div>
+      <div class="">
+        <button class="bg-[#D3D3D3] px-2 md:px-3 py-2 rounded font-medium sm:text-xs md:text-sm lg:text-lg">Short by
+          view</button>
+      </div>
+      <div class="rounded">
+        <a href="./blog.html"><button
+            class="bg-[#FF203D] text-white px-3 md:px-5 py-2 rounded font-medium sm:text-xs md:text-sm lg:text-lg">Blog</button></a>
+      </div>
+
+    </div>
+
+    <hr class="mt-6">
+  </header>
+
+  <div class="bg-[#FF203D] text-white p-4 text-center mt-6">
+    <h1 class="text-3xl font-semibold">Read our BLOGS</h1>
+  </div>
+  <main class="max-w-2xl mx-auto bg-white p-6 rounded shadow mt-8">
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">1. Discuss the scope of var, let, and const</h2>
+      <p class="mb-4">
+        JavaScript provides three ways to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>.
+        These keywords have different scopes and behaviors.
+      </p>
+      <p>
+        - <code>var</code>: Function-scoped, accessible throughout the entire function.
+      </p>
+      <p>
+        - <code>let</code>: Block-scoped, limited to the block where it's defined.
+      </p>
+      <p>
+        - <code>const</code>: Block-scoped, like <code>let</code>, but with values that cannot be reassigned.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">2. Use Cases of null and undefined</h2>
+      <p class="mb-4">
+        In JavaScript, both <code>null</code> and <code>undefined</code> are used to represent the absence of a value,
+        but they have different use cases:
+      </p>
+      <p>
+        - <code>null</code>: It's a deliberate absence of any object value. You can assign it to a variable to indicate
+        that it has no value.
+      </p>
+      <p>
+        - <code>undefined</code>: It typically represents a variable that has been declared but not initialized or a
+        non-existent property of an object.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">3. What is a REST API?</h2>
+      <p class="mb-4">
+        REST (Representational State Transfer) is an architectural style for designing networked applications. A REST
+        API is a set of rules and conventions for building and interacting with web services.
+      </p>
+      <p>
+        - RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) to perform CRUD (Create, Read, Update, Delete)
+        operations on resources.
+      </p>
+      <p>
+        - They are stateless, meaning each request from a client to a server must contain all the information needed to
+        understand and process the request.
+      </p>
+      <p>
+        - Resources in a REST API are identified by URLs, and data is typically exchanged in JSON format.
+      </p>
+    </section>
+  </main>
 
 
-    <script src="./javascript.js"></script>
-</body> -->
+  <script src="./javascript.js"></script>
+</body>
 
 </html>
