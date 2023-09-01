@@ -1,29 +1,42 @@
 const allData = async () => {
-    const response = await fetch("https://openapi.programming-hero.com/api/videos/categories")
-    const data = await response.json();
-    const btnContainer = document.getElementById("btn-container");
-    const singleData = data.data;
+  const response = await fetch("https://openapi.programming-hero.com/api/videos/categories")
+  const data = await response.json();
+  const btnContainer = document.getElementById("btn-container");
+  const singleData = data.data;
 
-    singleData.forEach((category) => {
-        const div = document.createElement("div");
-        div.innerHTML = `
-        <a onclick="cardDetail('${category.category_id}')" class="tab bg-[#D3D3D3] text-black rounded">${category.category}</a> 
+  singleData.forEach((category) => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <a onclick="cardDetail('${category.category_id}')" class="tab bg-[#D3D3D3] text-black rounded w-18">${category.category}</a> 
         `;
-        btnContainer.appendChild(div);
-    });
+    btnContainer.appendChild(div);
+  });
 }
 
 const cardDetail = async (categoryId) => {
-    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
-    const data = await response.json();
-    const cardContainer = document.getElementById("card-container")
+  console.log(categoryId);
+  const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
+  const data = await response.json();
+  const cardContainer = document.getElementById("card-container")
+  cardContainer.innerHTML = "";
+  if (data.data.length === 0) {
+    
+    const div = document.createElement('div');
+    div.innerHTML=`<div class="sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto my-10">
+    <img class=" mx-auto" src="./image/icon.png" alt="">
+    <h1 class="text-4xl font-bold text-center mt-10 px-5">Oops!! Sorry, There is no content here</h1>
+  </div>`
+    cardContainer.appendChild(div);
+  }
+
+
     data.data.forEach((videos) => {
-        console.log(videos)
-        const div = document.createElement('div')
-        div.innerHTML = `
+      console.log(videos)
+      const div = document.createElement('div')
+      div.innerHTML = `
         <div class="flex justify-center">
         <div class="w-72">
-          <img class="rounded h-48" src=${videos?.thumbnail} alt="">
+          <img class="rounded h-48 w-72" src=${videos?.thumbnail} alt="">
           <div class="flex justify-self-center items-center gap-5 mt-3">
             <div class="avatar">
               <div class="w-10 rounded-full">
@@ -34,7 +47,10 @@ const cardDetail = async (categoryId) => {
           </div>
           <div class="flex justify-self-center items-center ml-[60px] font-normal text-sm text-[#5D5D5D] mt-2 gap-2">
             <h1>${videos?.authors[0]?.profile_name}</h1>
-            <h1>${videos?.authors[0]?.verified}</h1>
+            <h1>${videos?.authors[0]?.verified
+          ? '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_11_245)"> <path d="M19.375 10.0001C19.375 10.8001 18.3922 11.4595 18.1953 12.197C17.9922 12.9595 18.5063 14.022 18.1203 14.6892C17.7281 15.3673 16.5484 15.4486 15.9984 15.9986C15.4484 16.5486 15.3672 17.7282 14.6891 18.1204C14.0219 18.5064 12.9594 17.9923 12.1969 18.1954C11.4594 18.3923 10.8 19.3751 10 19.3751C9.2 19.3751 8.54062 18.3923 7.80312 18.1954C7.04062 17.9923 5.97813 18.5064 5.31094 18.1204C4.63281 17.7282 4.55156 16.5486 4.00156 15.9986C3.45156 15.4486 2.27187 15.3673 1.87969 14.6892C1.49375 14.022 2.00781 12.9595 1.80469 12.197C1.60781 11.4595 0.625 10.8001 0.625 10.0001C0.625 9.20012 1.60781 8.54075 1.80469 7.80325C2.00781 7.04075 1.49375 5.97825 1.87969 5.31106C2.27187 4.63293 3.45156 4.55168 4.00156 4.00168C4.55156 3.45168 4.63281 2.272 5.31094 1.87981C5.97813 1.49387 7.04062 2.00793 7.80312 1.80481C8.54062 1.60793 9.2 0.625122 10 0.625122C10.8 0.625122 11.4594 1.60793 12.1969 1.80481C12.9594 2.00793 14.0219 1.49387 14.6891 1.87981C15.3672 2.272 15.4484 3.45168 15.9984 4.00168C16.5484 4.55168 17.7281 4.63293 18.1203 5.31106C18.5063 5.97825 17.9922 7.04075 18.1953 7.80325C18.3922 8.54075 19.375 9.20012 19.375 10.0001Z" fill="#2568EF"/> <path d="M12.7094 7.20637L9.14065 10.7751L7.29065 8.92668C6.88909 8.52512 6.23752 8.52512 5.83596 8.92668C5.4344 9.32824 5.4344 9.97981 5.83596 10.3814L8.43127 12.9767C8.8219 13.3673 9.45627 13.3673 9.8469 12.9767L14.1625 8.66106C14.5641 8.25949 14.5641 7.60793 14.1625 7.20637C13.761 6.80481 13.111 6.80481 12.7094 7.20637Z" fill="#FFFCEE"/> </g> <defs> <clipPath id="clip0_11_245"> <rect width="20" height="20" fill="white"/> </clipPath> </defs> </svg>'
+          : ''
+        }</h1>
           </div>
           <div class="ml-[60px] font-normal text-sm text-[#5D5D5D] mt-2">
             <h1><span>${videos?.others?.views}</span> Views</h1>
@@ -42,10 +58,11 @@ const cardDetail = async (categoryId) => {
         </div>
       </div>
         `
-        cardContainer.appendChild(div)
+      cardContainer.appendChild(div)
     })
-}
+  }
 
 
 
-allData();
+  allData();
+  cardDetail("1000");
