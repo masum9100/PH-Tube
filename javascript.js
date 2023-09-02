@@ -15,7 +15,6 @@ const allData = async () => {
   
 }
 
-
 const cardDetail = async (categoryId) => {
   console.log(categoryId);
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
@@ -24,17 +23,11 @@ const cardDetail = async (categoryId) => {
   cardContainer.innerHTML = "";
   if (data.data.length === 0) {
 
- 
-
-
-    const div = document.createElement('div');
-
-    div.innerHTML = `<div class="sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto my-10">
-    <img class=" mx-auto" src="./image/icon.png" alt="">
-    <h1 class="text-4xl font-bold text-center mt-10 px-5">Oops!! Sorry, There is no content here</h1>
-  </div>`
-    cardContainer.appendChild(div);
-
+    const errorText = document.getElementById("error-text")
+    errorText.classList.remove("hidden")
+  }else{
+    const errorText = document.getElementById("error-text")
+    errorText.classList.add("hidden") 
   }
 
   function convertSecondsToHoursAndMinutes(seconds) {
@@ -55,9 +48,9 @@ const cardDetail = async (categoryId) => {
         <div class="flex justify-center">
         <div class="w-72">
         <div class="relative">
-    <img class="rounded h-48 w-72" src="${videos?.thumbnail}" alt="">
-    <div class="absolute bottom-0 right-0 rounded text-white bg-black p-0">${convertSecondsToHoursAndMinutes(videos?.others?.posted_date)}</div>
-</div>
+          <img class="rounded h-48 w-72" src="${videos?.thumbnail}" alt="">
+          <div class="absolute bottom-0 right-0 rounded text-white bg-black p-0">${convertSecondsToHoursAndMinutes(videos?.others?.posted_date)}</div>
+       </div>
           <div class="flex justify-self-center items-center gap-5 mt-3">
             <div class="avatar">
               <div class="w-10 rounded-full">
