@@ -7,11 +7,14 @@ const allData = async () => {
   singleData.forEach((category) => {
     const div = document.createElement("div");
     div.innerHTML = `
-        <a onclick="cardDetail('${category.category_id}')" class="tab bg-[#D3D3D3] text-black rounded w-18">${category.category}</a> 
+    <button onclick="cardDetail('${category.category_id}')" class="btn btn-active bg-[#D3D3D3] text-black rounded w-18">${category.category}</button> 
         `;
     btnContainer.appendChild(div);
+    
   });
+  
 }
+
 
 const cardDetail = async (categoryId) => {
   console.log(categoryId);
@@ -21,12 +24,27 @@ const cardDetail = async (categoryId) => {
   cardContainer.innerHTML = "";
   if (data.data.length === 0) {
 
+ 
+
+
     const div = document.createElement('div');
+
     div.innerHTML = `<div class="sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto my-10">
     <img class=" mx-auto" src="./image/icon.png" alt="">
     <h1 class="text-4xl font-bold text-center mt-10 px-5">Oops!! Sorry, There is no content here</h1>
   </div>`
     cardContainer.appendChild(div);
+
+  }
+
+  function convertSecondsToHoursAndMinutes(seconds) {
+    if (seconds) {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      return `${hours}hrs ${minutes}min ago`;
+    } else {
+      return "";
+    }
   }
 
 
@@ -36,7 +54,10 @@ const cardDetail = async (categoryId) => {
     div.innerHTML = `
         <div class="flex justify-center">
         <div class="w-72">
-          <img class="rounded h-48 w-72" src=${videos?.thumbnail} alt="">
+        <div class="relative">
+    <img class="rounded h-48 w-72" src="${videos?.thumbnail}" alt="">
+    <div class="absolute bottom-0 right-0 rounded text-white bg-black p-0">${convertSecondsToHoursAndMinutes(videos?.others?.posted_date)}</div>
+</div>
           <div class="flex justify-self-center items-center gap-5 mt-3">
             <div class="avatar">
               <div class="w-10 rounded-full">
